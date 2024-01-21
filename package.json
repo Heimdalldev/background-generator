@@ -1,4 +1,21 @@
 {
+  "name": "background-generator",
+  "homepage": "https://heimdalldev.github.io/Background-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "build": "browserify script.js > bundle.js && live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heimdalldev/background-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heimdalldev/background-generator/issues"
+  },
   "dependencies": {
     "lodash": "^4.17.21"
   }
