@@ -47,7 +47,8 @@ const setGradient = () => {
     const hslColor3 = getHslFormat(color3.value);
     cssHsl.textContent = "linear-gradient(to right, " 
                         + hslColor1 
-                        + " - " + hslColor2 
+                        + " - " 
+                        + hslColor2 
                         + " - "
                         + hslColor3 
                         + ";"
