@@ -17222,10 +17222,12 @@ const cssHsl = document.querySelector("h5"); 						//show hsl
 
 
 let color1 = document.querySelector(".color1"); 				//colorinput left
-let color2 = document.querySelector(".color2"); 				//colorinput right
+let color2 = document.querySelector(".color2"); 				//colorinput center
+let color3 = document.querySelector(".color3"); 				//colorinput right
 let body = document.getElementById("gradient"); 				//body
 let random1 = document.querySelector(".r1")						//random btn left
-let random2 = document.querySelector(".r2")						//random btn right
+let random2 = document.querySelector(".r2")						//random btn center
+let random3 = document.querySelector(".r3")						//random btn right
 let complementaryBtn = document.querySelector(".complemantary") //complemantary color btn
 let contrastingBtn = document.querySelector(".contrasted")		//contrasted color btn
 
@@ -17234,7 +17236,9 @@ const setGradient = () => {
     body.style.background = "linear-gradient(to right, " 
     + color1.value 
     + ", " 
-    + color2.value 
+    + color2.value
+    + ", "  
+    + color3.value 
     + ")";
 
 
@@ -17242,12 +17246,26 @@ const setGradient = () => {
     cssRgb.textContent = body.style.background + ";";
 
     // Display Hex value
-    cssHex.textContent = "linear-gradient(to right, " + color1.value + " - " + color2.value + ";";
+    cssHex.textContent = "linear-gradient(to right, " 
+                        + color1.value 
+                        + " - "
+                        + color2.value 
+                        + " - " 
+                        + color3.value 
+                        + ";"
+                        ;
 
     // Calculate and display HSL value
     const hslColor1 = getHslFormat(color1.value);
     const hslColor2 = getHslFormat(color2.value);
-    cssHsl.textContent = "linear-gradient(to right, " + hslColor1 + " - " + hslColor2 + ";";
+    const hslColor3 = getHslFormat(color3.value);
+    cssHsl.textContent = "linear-gradient(to right, " 
+                        + hslColor1 
+                        + " - " + hslColor2 
+                        + " - "
+                        + hslColor3 
+                        + ";"
+                        ;
 }
 
 
@@ -17318,6 +17336,8 @@ color1.addEventListener("input", setGradient);
 
 color2.addEventListener("input", setGradient);
 
+color3.addEventListener("input", setGradient);
+
 	
 	// Randomly generates new colors for background
 
@@ -17340,6 +17360,15 @@ random2.addEventListener("click", () => {
 
   // Set the value of color2 and update the background gradient
   color2.value = randomColor2;
+	setGradient();
+});
+
+random3.addEventListener("click", () => {
+	// Generate a random hex color for color3
+  let randomColor3 = generateRandomHex();
+
+  // Set the value of color3 and update the background gradient
+  color3.value = randomColor3;
 	setGradient();
 });
 

@@ -1,10 +1,12 @@
 {
   "name": "background-generator",
-  "homepage": "https://heimdalldev.github.io/Background-generator",
+  "homepage": "https://heimdalldev.github.io/background-generator",
   "version": "1.0.0",
   "description": "",
   "main": "script.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "browserify script.js > bundle.js && live-server"
   },
   "repository": {
@@ -17,6 +19,8 @@
     "url": "https://github.com/heimdalldev/background-generator/issues"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "gh-pages": "^6.1.1",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0"
   }
 }
