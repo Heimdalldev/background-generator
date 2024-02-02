@@ -14,8 +14,8 @@ let body = document.getElementById("gradient"); 				//body
 let random1 = document.querySelector(".r1")						//random btn left
 let random2 = document.querySelector(".r2")						//random btn center
 let random3 = document.querySelector(".r3")						//random btn right
-let complementaryBtn = document.querySelector(".complemantary") //complemantary color btn
-let contrastingBtn = document.querySelector(".contrasted")		//contrasted color btn
+// let complementaryBtn = document.querySelector(".complemantary") //complemantary color btn
+// let contrastingBtn = document.querySelector(".contrasted")		//contrasted color btn
 
 
 const setGradient = () => {
@@ -53,21 +53,21 @@ const setGradient = () => {
                         + hslColor3 
                         + ";"
                         ;
-}
+  }
 
 
 	// Generate random hex code for color input
 
-const generateRandomHex = () => {
+function generateRandomHex() {
 
-		let hexCode = "#";
-  	const hexValues = "0123456789abcdef";
+    let hexCode = "#";
+    const hexValues = "0123456789abcdef";
 
-  	for (let i = 0; i < 6; i++) {
-    			hexCode += hexValues[(Math.floor(Math.random() * hexValues.length))];
-  	}
+    for (let i = 0; i < 6; i++) {
+        hexCode += hexValues[(Math.floor(Math.random() * hexValues.length))];
+    }
 
-  	return hexCode;
+    return hexCode;
 }
 
 
@@ -116,7 +116,6 @@ const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 }
 
 
-
 	// Adjust in realtime the background color
 
 color1.addEventListener("input", setGradient);
@@ -159,6 +158,56 @@ random3.addEventListener("click", () => {
 	setGradient();
 });
 
-		
-// shows currents css background on first page load
+const copyToClipboard = (text, element) => {
+    navigator.clipboard.writeText(text).then(() => {
+        element.classList.add("copied");
+        setTimeout(() => {
+            element.classList.remove("copied");
+        }, 2000);
+    }).catch(err => {
+        console.error('Unable to copy to clipboard', err);
+    });
+};
+
+// Event listeners for hover and click on h3, h4, h5
+cssRgb.addEventListener("mouseenter", () => {
+    cssRgb.textContent = "Click to copy";
+   
+});
+
+cssHex.addEventListener("mouseenter", () => {
+    cssHex.textContent = "Click to copy";
+    
+});
+
+cssHsl.addEventListener("mouseenter", () => {
+    cssHsl.textContent = "Click to copy";
+    
+});
+
+cssRgb.addEventListener("mouseleave", () => {
+    
+});
+
+cssHex.addEventListener("mouseleave", () => {
+    cssHex.style.cursor = "";
+});
+
+cssHsl.addEventListener("mouseleave", () => {
+    cssHsl.style.cursor = "";
+});
+
+cssRgb.addEventListener("click", () => {
+    copyToClipboard(cssRgb.textContent, cssRgb);
+});
+
+cssHex.addEventListener("click", () => {
+    copyToClipboard(cssHex.textContent, cssHex);
+});
+
+cssHsl.addEventListener("click", () => {
+    copyToClipboard(cssHsl.textContent, cssHsl);
+});
+
+shows currents css background on first page load
 setGradient();
