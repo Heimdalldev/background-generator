@@ -209,5 +209,5 @@ cssHsl.addEventListener("click", () => {
     copyToClipboard(cssHsl.textContent, cssHsl);
 });
 
-shows currents css background on first page load
+// shows currents css background on first page load
 setGradient();
