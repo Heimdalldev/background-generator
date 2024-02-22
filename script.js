@@ -170,32 +170,32 @@ const copyToClipboard = (text, element) => {
 };
 
 // Event listeners for hover and click on h3, h4, h5
-cssRgb.addEventListener("mouseenter", () => {
-    cssRgb.textContent = "Click to copy";
+// cssRgb.addEventListener("mouseenter", () => {
+//     cssRgb.textContent = "Click to copy";
    
-});
+// });
 
-cssHex.addEventListener("mouseenter", () => {
-    cssHex.textContent = "Click to copy";
+// cssHex.addEventListener("mouseenter", () => {
+//     cssHex.textContent = "Click to copy";
     
-});
+// });
 
-cssHsl.addEventListener("mouseenter", () => {
-    cssHsl.textContent = "Click to copy";
+// cssHsl.addEventListener("mouseenter", () => {
+//     cssHsl.textContent = "Click to copy";
     
-});
+// });
 
-cssRgb.addEventListener("mouseleave", () => {
-    
-});
+// cssRgb.addEventListener("mouseleave", () => {
+//     cssRgb.textContent
+// });
 
-cssHex.addEventListener("mouseleave", () => {
-    cssHex.style.cursor = "";
-});
+// cssHex.addEventListener("mouseleave", () => {
+//     cssHex.textContent = "";
+// });
 
-cssHsl.addEventListener("mouseleave", () => {
-    cssHsl.style.cursor = "";
-});
+// cssHsl.addEventListener("mouseleave", () => {
+//     cssHsl.textContent = "";
+// });
 
 cssRgb.addEventListener("click", () => {
     copyToClipboard(cssRgb.textContent, cssRgb);
