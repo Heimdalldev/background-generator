@@ -38,6 +38,7 @@ const setGradient = () => {
                         + color2.value 
                         + " - " 
                         + color3.value 
+                        + ")"
                         + ";"
                         ;
 
@@ -47,10 +48,11 @@ const setGradient = () => {
     const hslColor3 = getHslFormat(color3.value);
     cssHsl.textContent = "linear-gradient(to right, " 
                         + hslColor1 
-                        + " - " 
+                        + ", " 
                         + hslColor2 
-                        + " - "
+                        + ", "
                         + hslColor3 
+                        + ")"
                         + ";"
                         ;
   }
@@ -112,7 +114,7 @@ const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
     const roundedL = Math.round(l * 100);
 
     // Format HSL string
-    return `HSL ${roundedH}, ${roundedS}%, ${roundedL}%`;
+    return `HSL(${roundedH}, ${roundedS}%, ${roundedL}%)`;
 }
 
 

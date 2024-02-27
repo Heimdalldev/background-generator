@@ -17219,7 +17219,7 @@ var _ = require('lodash');
 const cssRgb = document.querySelector("h3"); 						//show rgb
 const cssHex = document.querySelector("h4"); 						//show hexcode
 const cssHsl = document.querySelector("h5"); 						//show hsl
-
+const copyPrompt = document.querySelector("h6")                       //show "Click to copy"
 
 let color1 = document.querySelector(".color1"); 				//colorinput left
 let color2 = document.querySelector(".color2"); 				//colorinput center
@@ -17252,6 +17252,7 @@ const setGradient = () => {
                         + color2.value 
                         + " - " 
                         + color3.value 
+                        + ")"
                         + ";"
                         ;
 
@@ -17261,16 +17262,17 @@ const setGradient = () => {
     const hslColor3 = getHslFormat(color3.value);
     cssHsl.textContent = "linear-gradient(to right, " 
                         + hslColor1 
-                        + " - " 
+                        + ", " 
                         + hslColor2 
-                        + " - "
+                        + ", "
                         + hslColor3 
+                        + ")"
                         + ";"
                         ;
   }
 
 
-	// Generate random hex code for color input
+// Generate random hex code for color input
 
 function generateRandomHex() {
 
@@ -17326,11 +17328,11 @@ const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
     const roundedL = Math.round(l * 100);
 
     // Format HSL string
-    return `HSL ${roundedH}, ${roundedS}%, ${roundedL}%`;
+    return `HSL(${roundedH}, ${roundedS}%, ${roundedL}%)`;
 }
 
 
-	// Adjust in realtime the background color
+// Adjust in realtime the background color
 
 color1.addEventListener("input", setGradient);
 
@@ -17372,55 +17374,56 @@ random3.addEventListener("click", () => {
 	setGradient();
 });
 
-const copyToClipboard = (text, element) => {
+const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
-        element.classList.add("copied");
+        copyPrompt.textContent = "Copied";
         setTimeout(() => {
-            element.classList.remove("copied");
+            copyPrompt.textContent = "Click to copy";
         }, 2000);
     }).catch(err => {
         console.error('Unable to copy to clipboard', err);
     });
 };
 
+
 // Event listeners for hover and click on h3, h4, h5
-// cssRgb.addEventListener("mouseenter", () => {
-//     cssRgb.textContent = "Click to copy";
+cssRgb.addEventListener("mouseenter", () => {
+    copyPrompt.textContent = "Click to copy";
    
-// });
+});
 
-// cssHex.addEventListener("mouseenter", () => {
-//     cssHex.textContent = "Click to copy";
+cssHex.addEventListener("mouseenter", () => {
+    copyPrompt.textContent = "Click to copy";
     
-// });
+});
 
-// cssHsl.addEventListener("mouseenter", () => {
-//     cssHsl.textContent = "Click to copy";
+cssHsl.addEventListener("mouseenter", () => {
+    copyPrompt.textContent = "Click to copy";
     
-// });
+});
 
-// cssRgb.addEventListener("mouseleave", () => {
-//     cssRgb.textContent
-// });
+cssRgb.addEventListener("mouseleave", () => {
+    copyPrompt.textContent = "";
+});
 
-// cssHex.addEventListener("mouseleave", () => {
-//     cssHex.textContent = "";
-// });
+cssHex.addEventListener("mouseleave", () => {
+    copyPrompt.textContent = "";
+});
 
-// cssHsl.addEventListener("mouseleave", () => {
-//     cssHsl.textContent = "";
-// });
+cssHsl.addEventListener("mouseleave", () => {
+    copyPrompt.textContent = "";
+});
 
 cssRgb.addEventListener("click", () => {
-    copyToClipboard(cssRgb.textContent, cssRgb);
+    copyToClipboard(cssRgb.textContent);
 });
 
 cssHex.addEventListener("click", () => {
-    copyToClipboard(cssHex.textContent, cssHex);
+    copyToClipboard(cssHex.textContent);
 });
 
 cssHsl.addEventListener("click", () => {
-    copyToClipboard(cssHsl.textContent, cssHsl);
+    copyToClipboard(cssHsl.textContent);
 });
 
 // shows currents css background on first page load
